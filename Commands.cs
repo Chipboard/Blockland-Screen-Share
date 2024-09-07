@@ -4,10 +4,8 @@ using BLSS.Mathematics;
 
 namespace BLSS
 {
-    internal class Commands
+    internal static class Commands
     {
-        public static void Eval(string code) => EncodeAndSend(code);
-
         public static void CreateBrick(Vector3 pos, string dataBlock = "brick1x1Data", int colorID = 0, int colorFXID = 0, int shapeFXID = 0, int angleID = 0, int BLID = 888888)
         {
             string rotation;
@@ -50,6 +48,8 @@ namespace BLSS
 
             Eval(command);
         }
+
+        public static void Eval(string code) => EncodeAndSend(code);
 
         static void EncodeAndSend(string code)
         {

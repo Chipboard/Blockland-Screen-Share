@@ -27,6 +27,7 @@ namespace BLSS
             while (captureForm != null)
             {
                 TCP.EnsureConnection();
+                BrickMediaUpdater.Update();
             }
         }
     }

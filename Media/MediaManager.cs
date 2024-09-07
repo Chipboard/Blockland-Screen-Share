@@ -1,16 +1,15 @@
-﻿using BLSS;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace BLSS
+namespace BLSS.Media
 {
     internal static class MediaManager
     {
-        static Dictionary<string, MediaCapture> captures = new();
+        public static readonly Dictionary<string, MediaCapture> captures = new();
 
         /// <summary>
         /// Create a new media capture object.
@@ -48,11 +47,12 @@ namespace BLSS
         /// <param name="captureName">The name of the capture to remove.</param>
         public static void RemoveCapture(string captureName)
         {
-            if(captures.TryGetValue(captureName, out MediaCapture capture))
+            if (captures.TryGetValue(captureName, out MediaCapture capture))
             {
                 captures.Remove(captureName);
                 capture.Dispose();
-            } else
+            }
+            else
             {
                 Debug.Log($"Tried to remove a capture that wasn't in the dictionary: {captureName}");
             }

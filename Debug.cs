@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BLSS
 {
-    internal class Debug
+    internal static class Debug
     {
         public static void Log(string message)
         {

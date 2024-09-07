@@ -2,9 +2,9 @@
 
 namespace BLSS
 {
-    internal interface IO
+    internal static class IO
     {
-        static readonly string imageMediaFilter = "Media Files|*.png;*.jpg;*.jpeg;*.bmp;*.gif;*.mp4;*.avi;*.mov;*.wmv;*.mkv;";
+        public static readonly string imageMediaFilter = "Media Files|*.png;*.jpg;*.jpeg;*.bmp;*.gif;*.mp4;*.avi;*.mov;*.wmv;*.mkv;";
 
         /// <summary>
         /// Get a save dialog and return the desired save path. Null if not found.

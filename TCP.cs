@@ -3,7 +3,7 @@ using BLSS.Mathematics;
 
 namespace BLSS
 {
-    internal class TCP
+    internal static class TCP
     {
         static TcpClient tcpClient;
         public static NetworkStream stream;
@@ -19,14 +19,6 @@ namespace BLSS
                 if (Connect())
                 {
                     Debug.Log("Connected.");
-
-                    /*for (int x = 0; x < 100; x++)
-                    {
-                        for (int y = 0; y < 33; y++)
-                        {
-                            Commands.CreateBrick(new Vector3(x * 0.25f, 0, (y * 0.6f) + 0.3f));
-                        }
-                    }*/
                 }
             }
         }
