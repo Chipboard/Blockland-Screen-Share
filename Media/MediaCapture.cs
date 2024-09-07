@@ -8,8 +8,8 @@ namespace BLSS.Media
 {
     internal class MediaCapture : IDisposable
     {
-        public CaptureType captureType { get; private set; }
-        public MediaObject mediaObject { get; private set; }
+        public CaptureType CaptureType { get; private set; }
+        public MediaObject MediaObject { get; private set; }
 
         /// <summary>
         /// Create a new MediaCapture.
@@ -35,15 +35,15 @@ namespace BLSS.Media
         public bool Initialize(string filePath)
         {
             Debug.Log("Initializing MediaCapture.");
-            captureType = DetectCaptureType(filePath);
+            CaptureType = DetectCaptureType(filePath);
 
-            if (captureType == CaptureType.Unknown)
+            if (CaptureType == CaptureType.Unknown)
             {
                 Debug.Log($"Unknown CaptureType for: {Path.GetFileName(filePath)}");
                 return false;
             }
 
-            mediaObject = new(captureType, filePath);
+            MediaObject = new(CaptureType, filePath);
 
             return true;
         }
@@ -53,7 +53,7 @@ namespace BLSS.Media
         /// </summary>
         public void Dispose()
         {
-            mediaObject?.Dispose();
+            MediaObject?.Dispose();
         }
 
         /// <summary>
@@ -66,10 +66,10 @@ namespace BLSS.Media
             string extension = Path.GetExtension(filePath).ToLower();
 
             // List of common image file extensions
-            string[] imageExtensions = { ".png", ".jpg", ".jpeg", ".bmp", ".gif" };
+            string[] imageExtensions = [".png", ".jpg", ".jpeg", ".bmp", ".gif"];
 
             // List of common video file extensions
-            string[] videoExtensions = { ".mp4", ".avi", ".mov", ".wmv", ".mkv", ".flv" };
+            string[] videoExtensions = [".mp4", ".avi", ".mov", ".wmv", ".mkv", ".flv"];
 
             if (Array.Exists(imageExtensions, ext => ext == extension))
                 return CaptureType.Image;
@@ -79,7 +79,13 @@ namespace BLSS.Media
                 return CaptureType.Unknown;
         }
 
-        public void GetPixel(int x, int y) => mediaObject.GetPixel(x, y);
+        /// <summary>
+        /// Get a pixel at specified coordinate.
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <returns>Color of desired pixel.</returns>
+        public Color GetPixel(int x, int y) => MediaObject.GetPixel(x, y);
     }
 
     public enum CaptureType

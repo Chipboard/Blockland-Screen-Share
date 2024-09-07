@@ -6,16 +6,9 @@ using System.Threading.Tasks;
 
 namespace BLSS.Mathematics
 {
-    public struct Vector3
+    public struct Vector3(float x, float y, float z)
     {
-        public float x, y, z;
-
-        public Vector3(float x, float y, float z)
-        {
-            this.x = x;
-            this.y = y;
-            this.z = z;
-        }
+        public float x = x, y = y, z = z;
 
         public override string ToString()
         {
@@ -23,16 +16,9 @@ namespace BLSS.Mathematics
         }
     }
 
-    public struct Vector3Int
+    public struct Vector3Int(int x, int y, int z)
     {
-        public int x, y, z;
-
-        public Vector3Int(int x, int y, int z)
-        {
-            this.x = x;
-            this.y = y;
-            this.z = z;
-        }
+        public int x = x, y = y, z = z;
 
         public override string ToString()
         {

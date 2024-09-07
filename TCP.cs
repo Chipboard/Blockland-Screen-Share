@@ -29,8 +29,7 @@ namespace BLSS
             {
                 Debug.Log($"Attempting to connect to: {ip}{port}");
 
-                if (tcpClient == null)
-                    tcpClient = new(ip, port);
+                tcpClient ??= new(ip, port);
 
                 stream = tcpClient.GetStream();
             }

@@ -9,7 +9,7 @@ namespace BLSS.Media
 {
     internal static class MediaManager
     {
-        public static readonly Dictionary<string, MediaCapture> captures = new();
+        public static readonly Dictionary<string, MediaCapture> captures = [];
 
         /// <summary>
         /// Create a new media capture object.

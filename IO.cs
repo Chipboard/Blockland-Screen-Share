@@ -13,7 +13,7 @@ namespace BLSS
         /// <returns>Desired file path.</returns>
         public static string SaveDialog(string fileFilter)
         {
-            SaveFileDialog saveDialog = new SaveFileDialog
+            SaveFileDialog saveDialog = new()
             {
                 InitialDirectory = Application.ExecutablePath,
                 Title = "Save Layers",
@@ -48,9 +48,11 @@ namespace BLSS
         /// <returns>Desired file path.</returns>
         public static string OpenDialog(string fileFilter)
         {
-            OpenFileDialog openDialog = new();
-            openDialog.Filter = fileFilter;
-            openDialog.Multiselect = false;
+            OpenFileDialog openDialog = new()
+            {
+                Filter = fileFilter,
+                Multiselect = false
+            };
 
             DialogResult result = openDialog.ShowDialog();
             if (result != DialogResult.OK)

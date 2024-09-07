@@ -8,30 +8,14 @@ namespace BLSS
     {
         public static void CreateBrick(Vector3 pos, string dataBlock = "brick1x1Data", int colorID = 0, int colorFXID = 0, int shapeFXID = 0, int angleID = 0, int BLID = 888888)
         {
-            string rotation;
-            switch (angleID)
+            string rotation = angleID switch
             {
-                case 0:
-                    rotation = "1 0 0 0";
-                    break;
-
-                case 1:
-                    rotation = "0 0 1 90";
-                    break;
-
-                case 2:
-                    rotation = "0 0 1 180";
-                    break;
-
-                case 3:
-                    rotation = "0 0 -1 90";
-                    break;
-
-                default:
-                    rotation = "0 0 0 0";
-                    break;
-            }
-
+                0 => "1 0 0 0",
+                1 => "0 0 1 90",
+                2 => "0 0 1 180",
+                3 => "0 0 -1 90",
+                _ => "0 0 0 0",
+            };
             string command =
                 "%brick = new fxDtsBrick(){ " +
                 $"colorFxID = {colorFXID}; " +

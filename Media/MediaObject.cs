@@ -7,6 +7,11 @@ namespace BLSS.Media
         object mediaData;
         CaptureType captureType;
 
+        /// <summary>
+        /// Create a new MediaObject for use in reading back media.
+        /// </summary>
+        /// <param name="captureType"></param>
+        /// <param name="filePath"></param>
         public MediaObject(CaptureType captureType, string filePath)
         {
             Debug.Log($"Creating MediaObject of CaptureType: {captureType}");
@@ -25,7 +30,7 @@ namespace BLSS.Media
         }
 
         /// <summary>
-        /// Get a pixel at specified coordinates.
+        /// Get a pixel at specified coordinate.
         /// </summary>
         /// <param name="x"></param>
         /// <param name="y"></param>
