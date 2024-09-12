@@ -1,6 +1,6 @@
 ﻿namespace BLSS.Mathematics
 {
-    public struct Vector3(float x, float y, float z)
+    public struct Vectors(float x, float y, float z)
     {
         public float x = x, y = y, z = z;
 

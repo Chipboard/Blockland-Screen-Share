@@ -1,4 +1,6 @@
-﻿namespace BLSS.Core
+﻿using System.Windows.Forms;
+
+namespace BLSS.Core
 {
     internal static class Debug
     {
@@ -9,6 +11,15 @@
                 {
                     Program.captureForm.DebugOutput.Text = Program.captureForm.DebugOutput.Text + "\r\n" + message;
                 });
+        }
+
+        public static void Clear()
+        {
+            Program.captureForm.DebugOutput.Invoke(
+            delegate
+            {
+                Program.captureForm.DebugOutput.Text = "";
+            });
         }
     }
 }

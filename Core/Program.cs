@@ -28,8 +28,9 @@ namespace BLSS.Core
         {
             while (captureForm != null)
             {
+                Time.Update();
                 TCP.EnsureConnection();
-                BrickMediaUpdater.Update();
+                BrickMediaManager.Update();
             }
         }
     }

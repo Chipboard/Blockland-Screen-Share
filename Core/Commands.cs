@@ -6,7 +6,7 @@ namespace BLSS.Core
 {
     internal static class Commands
     {
-        public static void CreateBrick(Vector3 pos, string dataBlock = "brick1x1Data", int colorID = 0, int colorFXID = 0, int shapeFXID = 0, int angleID = 0, int BLID = 888888)
+        public static void CreateBrick(Vectors pos, string dataBlock = "brick1x1Data", int colorID = 0, int colorFXID = 0, int shapeFXID = 0, int angleID = 0, int BLID = 888888)
         {
             string rotation = angleID switch
             {
@@ -31,7 +31,7 @@ namespace BLSS.Core
                 "}; " +
                 "%brick.plant(); %brick.setTrusted(1); missionCleanup.add(%brick); mainBrickGroup.add(%brick);";
 
-            Eval(command);
+            EncodeAndSend(command);
         }
 
         public static void Eval(string code) => EncodeAndSend(code);
