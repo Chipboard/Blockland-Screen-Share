@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
+﻿using System.Collections.Concurrent;
+using BLSS.Core;
 
 namespace BLSS.Media
 {
     internal static class MediaManager
     {
-        public static readonly Dictionary<string, MediaCapture> captures = [];
+        public static readonly ConcurrentDictionary<string, MediaCapture> captures = [];
 
         /// <summary>
         /// Create a new media capture object.
@@ -33,7 +29,12 @@ namespace BLSS.Media
 
             if (MediaCapture.Create(filePath, out MediaCapture newCapture))
             {
-                captures.Add(captureName, newCapture);
+                if (!captures.TryAdd(captureName, newCapture))
+                {
+                    Debug.Log($"Failed to add capture to ConcurrentDictionary for {captureFinalName}");
+                    return false;
+                }
+
                 Debug.Log($"Successfully created MediaCapture for: {captureFinalName}");
                 return true;
             }
@@ -47,10 +48,12 @@ namespace BLSS.Media
         /// <param name="captureName">The name of the capture to remove.</param>
         public static void RemoveCapture(string captureName)
         {
-            if (captures.TryGetValue(captureName, out MediaCapture capture))
+            if (captures.ContainsKey(captureName))
             {
-                captures.Remove(captureName);
-                capture.Dispose();
+                if (captures.TryRemove(captureName, out MediaCapture? capture))
+                {
+                    capture.Dispose();
+                }
             }
             else
             {

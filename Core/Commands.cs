@@ -1,8 +1,8 @@
-﻿using BLSS;
-using System.Text;
+﻿using System.Text;
 using BLSS.Mathematics;
+using BLSS.Networking;
 
-namespace BLSS
+namespace BLSS.Core
 {
     internal static class Commands
     {
@@ -16,6 +16,7 @@ namespace BLSS
                 3 => "0 0 -1 90",
                 _ => "0 0 0 0",
             };
+
             string command =
                 "%brick = new fxDtsBrick(){ " +
                 $"colorFxID = {colorFXID}; " +

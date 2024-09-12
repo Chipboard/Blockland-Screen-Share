@@ -1,7 +1,7 @@
 ﻿using System.Net.Sockets;
-using BLSS.Mathematics;
+using BLSS.Core;
 
-namespace BLSS
+namespace BLSS.Networking
 {
     internal static class TCP
     {

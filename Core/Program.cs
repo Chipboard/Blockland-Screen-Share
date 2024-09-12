@@ -1,4 +1,7 @@
-namespace BLSS
+using BLSS.BrickScreen;
+using BLSS.Networking;
+
+namespace BLSS.Core
 {
     internal static class Program
     {
@@ -11,7 +14,6 @@ namespace BLSS
 
             captureForm = new();
             captureForm.FormClosed += CaptureForm_FormClosed;
-            Debug.Log("Program starting...");
             Thread loopThread = new(UpdateThread);
             loopThread.Start();
             Application.Run(captureForm);

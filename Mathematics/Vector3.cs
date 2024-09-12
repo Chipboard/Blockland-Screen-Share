@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BLSS.Mathematics
+﻿namespace BLSS.Mathematics
 {
     public struct Vector3(float x, float y, float z)
     {
@@ -23,6 +17,26 @@ namespace BLSS.Mathematics
         public override string ToString()
         {
             return $"{x} {y} {z}";
+        }
+    }
+
+    public struct Vector2(float x, float y)
+    {
+        public float x = x, y = y;
+
+        public override string ToString()
+        {
+            return $"{x} {y}";
+        }
+    }
+
+    public struct Vector2Int(int x, int y)
+    {
+        public int x = x, y = y;
+
+        public override string ToString()
+        {
+            return $"{x} {y}";
         }
     }
 }

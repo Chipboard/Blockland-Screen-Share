@@ -1,9 +1,12 @@
-﻿using System.Runtime.CompilerServices;
+﻿using BLSS.Core;
+using BLSS.Mathematics;
 
 namespace BLSS.Media
 {
     internal class MediaObject : IDisposable
     {
+        public Vector2Int resolution;
+
         object mediaData;
         CaptureType captureType;
 
@@ -19,7 +22,9 @@ namespace BLSS.Media
             switch (captureType)
             {
                 case CaptureType.Image:
-                    mediaData = Bitmap.FromFile(filePath);
+                    Bitmap? mediaBitmap = Bitmap.FromFile(filePath) as Bitmap;
+                    resolution = new Vector2Int(mediaBitmap.Width, mediaBitmap.Height);
+                    mediaData = mediaBitmap;
                     break;
 
                 default:
@@ -37,6 +42,12 @@ namespace BLSS.Media
         /// <returns>Color of desired pixel.</returns>
         public Color GetPixel(int x, int y)
         {
+            if (x > resolution.x)
+                x = MathUtil.Wrap(x, 0, resolution.x);
+
+            if (y > resolution.y)
+                y = MathUtil.Wrap(y, 0, resolution.y);
+
             switch (captureType)
             {
                 case CaptureType.Image:
